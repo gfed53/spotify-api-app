@@ -9,14 +9,18 @@
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-	<div ng-controller="mainController">
-		
+	<div ng-controller="mainController as main">
+		<pre>{{ main.artistID }}</pre>
+		<button ng-click="main.getArtist()">Go!</button>
+		<button ng-click="main.getRelated(main.artistID)">Related..</button>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<script src="../node_modules/angular/angular.min.js"></script>
 	<script src="../node_modules/angular-animate/angular-animate.min.js"></script>
 	<script src="../node_modules/angular-aria/angular-aria.min.js"></script>
 	<script src="../node_modules/angular-material/angular-material.min.js"></script>
+	<!-- Using modified version of angular-spotify I made since the live one is broken on current versions of Angular -->
+	<script src="../lib/angular-spotify-mod.js"></script>
 	<script src="app.js"></script>
 	<script src="components/library.js"></script>
 	<script src="controllers/mainController.js"></script>
