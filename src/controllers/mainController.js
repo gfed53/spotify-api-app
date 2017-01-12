@@ -10,21 +10,29 @@
 		vm.getRelated = getRelated;
 
 		function getArtist(keyword){
-			spAPI().getArtist()
-			.then((response) => {
-				console.log(response);
-				console.log(response.data.artists.items[0].id);
-				vm.artistID = response.data.artists.items[0].id;
+			vm.isFinished = false;
+			vm.isFetching = true;
+			spAPI().getArtist(keyword)
+			.then((artist) => {
+				vm.isFetching = false;
+				vm.isFinished = true;
+				vm.keyword = '';
+				console.log(artist);
+				vm.artist = artist;
 			});
 		}
 
 		function getRelated(id){
+			vm.isFinished = false;
+			vm.isFetching = true;
 			spAPI().getRelated(id)
-			.then(response => {
-				console.log(response);
+			.then(artist => {
+				vm.isFetching = false;
+				vm.isFinished = true;
+				console.log(artist);
+				vm.artist = artist;
 			})
 		}
-		
 	}
 
 })();
