@@ -60,13 +60,11 @@
 			}
 
 			function getPopular(array){
-				let popularArray = array.filter(artist => artist.popularity >= 50);
-				return popularArray;
+				return array.filter(artist => artist.popularity >= 50);
 			}
 
 			function getHipster(array){
-				let hipsterArray = array.filter(artist => artist.popularity <= 50);
-				return hipsterArray;
+				return array.filter(artist => artist.popularity <= 50);
 			}
 
 			return services;

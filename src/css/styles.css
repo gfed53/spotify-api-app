@@ -35,8 +35,7 @@
 	top: 32em;
 }
 
-
-@media screen and ('min-width: 404px'){
+@media screen and (min-width: 404px){
 	.btn-next {
 		background-color: transparent;
 	}
