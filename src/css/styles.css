@@ -6,6 +6,10 @@
 	margin: 2em 0;
 }
 
+.my-searchbar {
+	margin-top: 2em;
+}
+
 .result-image {
 	max-width: 25em;
 }
@@ -16,19 +20,19 @@
 }
 
 .btn-next.btn-next-popular {
-	top: 17em;
+	top: 16em;
 }
 
 .btn-next.btn-next-hipster {
-	top: 20em;
+	top: 19em;
 }
 
 .btn-next.btn-next-whatever {
-	top: 23em;
+	top: 22em;
 }
 
 .btn-next.btn-next-link {
-	top: 33em;
+	top: 32em;
 }
 
 

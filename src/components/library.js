@@ -4,12 +4,11 @@
 	.factory('spAPI', ['$http', '$q', 'Spotify', spAPI]);
 
 	function spAPI($http, $q, Spotify){
-		//idea: search for artist, then get a randomly selected 
+		//Idea: Search for artist, then get a randomly selected 
 		//related artist. From there, like Pandora, you can sift
 		//from related artist to related artist. Users can have
 		//the option of getting 'popular' results or 'hipster' results. 
 		return function(){
-			console.log('the factory');
 			let services = {
 				getArtist: getArtist,
 				getRelated: getRelated
@@ -22,7 +21,6 @@
 					offset: 0
 				}
 				Spotify.search(keyword, 'artist', options).then((response) => {
-					console.log(response);
 					if(!response.data.artists.items.length){
 						deferred.reject();
 					} else {
@@ -63,13 +61,11 @@
 
 			function getPopular(array){
 				let popularArray = array.filter(artist => artist.popularity >= 50);
-				console.log(popularArray);
 				return popularArray;
 			}
 
 			function getHipster(array){
 				let hipsterArray = array.filter(artist => artist.popularity <= 50);
-				console.log(hipsterArray);
 				return hipsterArray;
 			}
 

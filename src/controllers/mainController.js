@@ -4,8 +4,7 @@
 	.controller('mainController', ['spAPI', mainController]);
 	
 	function mainController(spAPI){
-		// console.log('controller');
-		var vm = this;
+		let vm = this;
 		vm.getArtist = getArtist;
 		vm.getRelated = getRelated;
 
@@ -18,13 +17,11 @@
 				vm.isFetching = false;
 				vm.isFinished = true;
 				vm.keyword = '';
-				console.log(artist);
 				vm.artist = artist;
 			}, () => {
 				vm.isFetching = false;
 				vm.isFinished = true;
 				vm.noResults = true;
-				console.log('error');
 			});
 		}
 
@@ -36,13 +33,11 @@
 			.then(artist => {
 				vm.isFetching = false;
 				vm.isFinished = true;
-				console.log(artist);
 				vm.artist = artist;
 			}, () => {
 				vm.isFetching = false;
 				vm.isFinished = true;
 				vm.noResults = true;
-				console.log('error');
 			})
 		}
 	}
