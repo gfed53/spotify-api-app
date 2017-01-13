@@ -12,6 +12,7 @@
 		function getArtist(keyword){
 			vm.isFinished = false;
 			vm.isFetching = true;
+			vm.noResults = false;
 			spAPI().getArtist(keyword)
 			.then((artist) => {
 				vm.isFetching = false;
@@ -19,18 +20,29 @@
 				vm.keyword = '';
 				console.log(artist);
 				vm.artist = artist;
+			}, () => {
+				vm.isFetching = false;
+				vm.isFinished = true;
+				vm.noResults = true;
+				console.log('error');
 			});
 		}
 
-		function getRelated(id){
+		function getRelated(id, type){
 			vm.isFinished = false;
 			vm.isFetching = true;
-			spAPI().getRelated(id)
+			vm.noResults = false;
+			spAPI().getRelated(id, type)
 			.then(artist => {
 				vm.isFetching = false;
 				vm.isFinished = true;
 				console.log(artist);
 				vm.artist = artist;
+			}, () => {
+				vm.isFetching = false;
+				vm.isFinished = true;
+				vm.noResults = true;
+				console.log('error');
 			})
 		}
 	}
