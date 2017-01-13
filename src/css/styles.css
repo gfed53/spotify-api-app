@@ -2,6 +2,10 @@
 	text-align: center;
 }
 
+.my-container {
+	margin: 2em 0;
+}
+
 .result-image {
 	max-width: 25em;
 }
@@ -12,15 +16,19 @@
 }
 
 .btn-next.btn-next-popular {
-	top: 13em;
+	top: 17em;
 }
 
 .btn-next.btn-next-hipster {
-	top: 16em;
+	top: 20em;
 }
 
 .btn-next.btn-next-whatever {
-	top: 19em;
+	top: 23em;
+}
+
+.btn-next.btn-next-link {
+	top: 33em;
 }
 
 
