@@ -1,8 +1,12 @@
+# Important!
+
+I'm currently reworking this app to get it up and running again since the Spotify API requires auth tokens.
+
 # Before Using..
 
 1. Make sure you have Node.js and Node Package Manager(npm) installed
 
-2. Run `npm install` in the command line
+2. Run `npm i` in the command line
 
 # About This App
 

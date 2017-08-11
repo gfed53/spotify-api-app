@@ -4,14 +4,12 @@
   "description": "Spotify API App",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server"
   },
   "author": "Gregory Federico",
   "license": "Unlicensed",
   "dependencies": {
-    "angular": "^1.6.1",
-    "angular-animate": "^1.6.1",
-    "angular-aria": "^1.6.1",
-    "angular-material": "^1.1.1"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4"
   }
 }

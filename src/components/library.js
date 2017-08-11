@@ -1,3 +1,5 @@
+// jshint esversion: 6
+
 (function(){
 	angular
 	.module('myApp')
@@ -19,7 +21,7 @@
 				let options = {
 					limit: 50,
 					offset: 0
-				}
+				};
 				Spotify.search(keyword, 'artist', options).then((response) => {
 					if(!response.data.artists.items.length){
 						deferred.reject();
@@ -68,7 +70,7 @@
 			}
 
 			return services;
-		}
+		};
 	}
 
 })();
