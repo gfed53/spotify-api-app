@@ -11,11 +11,8 @@
 <body>
 	<main class="my-container" ng-controller="mainController as main">
 		<div id="need-auth">
-			<md-input-container>
-				<md-button type="submit">Get Token</md-button>
-			</md-input-container>
 		</div>
-		<div id="logged-in">
+		<div id="search">
 			<p>Search for an artist. Then, grab a related artist with the popularity of your choice.</p>
 			<form ng-submit="main.getArtist(main.keyword)">
 				<md-input-container class="my-searchbar">

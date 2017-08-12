@@ -4,10 +4,13 @@
 	angular
 	.module('myApp', ['ngAnimate', 'ngMaterial', 'spotify'])
 
-	.run(['spAPIKeys', (spAPIKeys)=>{
+	.run(['spAPIKeys', 'spGetToken', (spAPIKeys, spGetToken)=>{
 	spAPIKeys.init()
-		.then(()=>{
-			//Do nothing
+		.then((obj)=>{
+			console.log('Apis obj',obj);
+
+			//Use client ID to fetch auth token if needed
+			spGetToken.token = spGetToken.get();
 		});		
 	}]);
 

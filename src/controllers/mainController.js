@@ -10,8 +10,6 @@
 		vm.getArtist = getArtist;
 		vm.getRelated = getRelated;
 
-		vm.needsToken = spGetToken.token;
-		console.log('needsToken',vm.needsToken);
 
 		function getArtist(keyword){
 			vm.isFinished = false;
@@ -23,6 +21,7 @@
 				vm.isFinished = true;
 				vm.keyword = '';
 				vm.artist = artist;
+				console.log('artist',vm.artist);
 			}, () => {
 				vm.isFetching = false;
 				vm.isFinished = true;

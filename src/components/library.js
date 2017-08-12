@@ -52,6 +52,10 @@
 						deferred.resolve(artist);
 					}
 					
+				}, (err) => {
+					if(err.status === 401 && spGetToken.token){
+						spGetToken.auth();
+					}
 				});
 
 				return deferred.promise;
@@ -60,24 +64,37 @@
 
 			function getRelated(id, type){
 				let deferred = $q.defer();
-				Spotify.getRelatedArtists(id).then(response => {
-					let artistsRough = response.data.artists;
-					let artists;
+
+				let url = `https://api.spotify.com/v1/artists/${id}/related-artists`;
+				// let params = {
+				// 	q: keyword,
+				// 	type: 'artist'
+				// };
+
+				let headers = {
+					"Authorization": `Bearer ${token}`
+				};
+
+
+				$http.get(url, {headers}).then(response => {
+					let allArtists = response.data.artists;
 					if (type){
 						if(type === 'popular'){
-							artists = getPopular(artistsRough);
+							selectedGrp = getPopular(allArtists);
 						} else if(type === 'hipster'){
-							artists = getHipster(artistsRough);
+							selectedGrp = getHipster(allArtists);
 						}
 					} else {
-						artists = artistsRough;
+						selectedGrp = allArtists;
 					}
 
-					if(!artists.length){
+					if(!selectedGrp.length){
 						deferred.reject();
 					}
-					let artist = artists.getRandom();
+					let artist = selectedGrp.getRandom();
 					deferred.resolve(artist);
+				}, err => {
+					console.log('err',err);
 				});
 
 				return deferred.promise;
@@ -108,7 +125,7 @@
 			initKeys()
 			.then((data)=> {
 				this.apisObj = data;
-				deferred.resolve();
+				deferred.resolve(data);
 			});
 
 			return deferred.promise;
@@ -133,9 +150,14 @@
 	}
 
 	function spGetToken(spAPIKeys){
+
+		//Test for APIs obj
+
+		console.log('Apis obj',spAPIKeys.get());
+
 		let obj = JSON.parse(localStorage.getItem('spotOAuth'));
 
-		this.token = get();
+		// this.token = get();
 
 		this.get = get;
 		this.auth = auth;
@@ -153,14 +175,15 @@
 			if(obj !== null && obj !== undefined){
 				return obj.oauth.access_token;
 			} else {
-				ahModals().create(spotAuthTemp)
-				.then(()=>{
-					auth();
-				}, ()=>{
-					return null;
-				});
+				console.log('no saved token');
+				auth();
+				
 			}
 		}
+
+		// function init(){
+
+		// }
 	}
 
 })();
