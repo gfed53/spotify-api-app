@@ -3,9 +3,12 @@
 (function(){
 	angular
 	.module('myApp')
-	.factory('spAPI', ['$http', '$q', 'Spotify', spAPI]);
+	.factory('spAPISearch', ['$http', '$q', 'spGetToken', spAPISearch])
+	.service('spAPIKeys', ['$http', '$q', spAPIKeys])
+	.service('spGetToken', ['spAPIKeys', spGetToken]);
 
-	function spAPI($http, $q, Spotify){
+
+	function spAPISearch($http, $q, spGetToken){
 		//Idea: Search for artist, then get a randomly selected 
 		//related artist. From there, like Pandora, you can sift
 		//from related artist to related artist. Users can have
@@ -16,13 +19,32 @@
 				getRelated: getRelated
 			};
 
+			let token = spGetToken.token;
+
+
+
 			function getArtist(keyword){
 				let deferred = $q.defer();
-				let options = {
-					limit: 50,
-					offset: 0
+				// let options = {
+				// 	limit: 50,
+				// 	offset: 0
+				// };
+
+				let url = 'https://api.spotify.com/v1/search';
+				let params = {
+					q: keyword,
+					type: 'artist'
 				};
-				Spotify.search(keyword, 'artist', options).then((response) => {
+
+				let headers = {
+					"Authorization": `Bearer ${token}`
+				};
+				// Spotify.search(keyword, 'artist', options)
+				$http.get(url,{
+					headers,
+					params
+				})
+				.then((response) => {
 					if(!response.data.artists.items.length){
 						deferred.reject();
 					} else {
@@ -71,6 +93,74 @@
 
 			return services;
 		};
+	}
+
+	function spAPIKeys($http, $q){
+		this.get = get;
+		// this.update = update;
+		this.init = init;
+		this.initKeys = initKeys;
+
+		
+
+		function init(){
+			let deferred = $q.defer();
+			initKeys()
+			.then((data)=> {
+				this.apisObj = data;
+				deferred.resolve();
+			});
+
+			return deferred.promise;
+		}
+
+		function initKeys(){
+			return $http.get('/access')
+					.then((res) => {
+						return res.data;
+					});
+		}
+
+		function get(){
+			return this.apisObj;
+		}
+
+		// function update(obj){
+		// 	localStorage.setItem('ah-log-info', JSON.stringify(obj));
+		// 	this.apisObj = obj;
+		// 	$state.reload();
+		// }
+	}
+
+	function spGetToken(spAPIKeys){
+		let obj = JSON.parse(localStorage.getItem('spotOAuth'));
+
+		this.token = get();
+
+		this.get = get;
+		this.auth = auth;
+
+		function auth(){
+			let url = 'https://accounts.spotify.com/authorize';
+			let obj = spAPIKeys.get();
+			let client_id = spAPIKeys.get().spotID;
+			let redirect_uri = 'http://localhost:8080/oauth-callback.html';
+
+			window.location.href = 'https://accounts.spotify.com/authorize?client_id=' + client_id + '&response_type=token&redirect_uri='+redirect_uri;
+		}
+
+		function get(){	
+			if(obj !== null && obj !== undefined){
+				return obj.oauth.access_token;
+			} else {
+				ahModals().create(spotAuthTemp)
+				.then(()=>{
+					auth();
+				}, ()=>{
+					return null;
+				});
+			}
+		}
 	}
 
 })();

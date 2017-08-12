@@ -1,18 +1,23 @@
+// jshint esversion: 6
+
 (function(){
 	angular
 	.module('myApp')
-	.controller('mainController', ['spAPI', mainController]);
+	.controller('mainController', ['spAPISearch', 'spGetToken', mainController]);
 	
-	function mainController(spAPI){
+	function mainController(spAPISearch, spGetToken){
 		let vm = this;
 		vm.getArtist = getArtist;
 		vm.getRelated = getRelated;
+
+		vm.needsToken = spGetToken.token;
+		console.log('needsToken',vm.needsToken);
 
 		function getArtist(keyword){
 			vm.isFinished = false;
 			vm.isFetching = true;
 			vm.noResults = false;
-			spAPI().getArtist(keyword)
+			spAPISearch().getArtist(keyword)
 			.then((artist) => {
 				vm.isFetching = false;
 				vm.isFinished = true;
@@ -29,7 +34,7 @@
 			vm.isFinished = false;
 			vm.isFetching = true;
 			vm.noResults = false;
-			spAPI().getRelated(id, type)
+			spAPISearch().getRelated(id, type)
 			.then(artist => {
 				vm.isFetching = false;
 				vm.isFinished = true;
@@ -38,7 +43,7 @@
 				vm.isFetching = false;
 				vm.isFinished = true;
 				vm.noResults = true;
-			})
+			});
 		}
 	}
 
