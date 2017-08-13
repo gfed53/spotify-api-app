@@ -25,10 +25,6 @@
 
 			function getArtist(keyword){
 				let deferred = $q.defer();
-				// let options = {
-				// 	limit: 50,
-				// 	offset: 0
-				// };
 
 				let url = 'https://api.spotify.com/v1/search';
 				let params = {
@@ -39,7 +35,6 @@
 				let headers = {
 					"Authorization": `Bearer ${token}`
 				};
-				// Spotify.search(keyword, 'artist', options)
 				$http.get(url,{
 					headers,
 					params
@@ -66,10 +61,6 @@
 				let deferred = $q.defer();
 
 				let url = `https://api.spotify.com/v1/artists/${id}/related-artists`;
-				// let params = {
-				// 	q: keyword,
-				// 	type: 'artist'
-				// };
 
 				let headers = {
 					"Authorization": `Bearer ${token}`
@@ -114,7 +105,6 @@
 
 	function spAPIKeys($http, $q){
 		this.get = get;
-		// this.update = update;
 		this.init = init;
 		this.initKeys = initKeys;
 
@@ -141,12 +131,6 @@
 		function get(){
 			return this.apisObj;
 		}
-
-		// function update(obj){
-		// 	localStorage.setItem('ah-log-info', JSON.stringify(obj));
-		// 	this.apisObj = obj;
-		// 	$state.reload();
-		// }
 	}
 
 	function spGetToken(spAPIKeys){
@@ -156,8 +140,6 @@
 		console.log('Apis obj',spAPIKeys.get());
 
 		let obj = JSON.parse(localStorage.getItem('spotOAuth'));
-
-		// this.token = get();
 
 		this.get = get;
 		this.auth = auth;
@@ -180,10 +162,6 @@
 				
 			}
 		}
-
-		// function init(){
-
-		// }
 	}
 
 })();
