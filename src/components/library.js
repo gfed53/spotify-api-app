@@ -9,10 +9,6 @@
 
 
 	function spAPISearch($http, $q, spGetToken){
-		//Idea: Search for artist, then get a randomly selected 
-		//related artist. From there, like Pandora, you can sift
-		//from related artist to related artist. Users can have
-		//the option of getting 'popular' results or 'hipster' results. 
 		return function(){
 			let services = {
 				getArtist: getArtist,
