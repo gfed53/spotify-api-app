@@ -8,6 +8,11 @@
 
 .my-searchbar {
 	margin-top: 2em;
+
+}
+
+.my-searchbar input {
+	text-align: left;
 }
 
 .result-image {

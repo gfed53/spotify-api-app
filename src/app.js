@@ -2,7 +2,7 @@
 
 (function(){
 	angular
-	.module('myApp', ['ngAnimate', 'ngMaterial', 'spotify'])
+	.module('myApp', ['ngAnimate', 'ngMaterial'])
 
 	.run(['spAPIKeys', 'spGetToken', (spAPIKeys, spGetToken)=>{
 	spAPIKeys.init()

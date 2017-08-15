@@ -130,11 +130,6 @@
 	}
 
 	function spGetToken(spAPIKeys){
-
-		//Test for APIs obj
-
-		console.log('Apis obj',spAPIKeys.get());
-
 		let obj = JSON.parse(localStorage.getItem('spotOAuth'));
 
 		this.get = get;
@@ -153,7 +148,6 @@
 			if(obj !== null && obj !== undefined){
 				return obj.oauth.access_token;
 			} else {
-				console.log('no saved token');
 				auth();
 				
 			}
