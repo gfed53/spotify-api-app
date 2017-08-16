@@ -10,8 +10,6 @@
 </head>
 <body>
 	<main class="my-container" ng-controller="mainController as main" ng-cloak>
-		<div id="need-auth">
-		</div>
 		<div id="search">
 			<p>Search for an artist. Then, grab a related artist with the popularity of your choice.</p>
 			<p>You may be redirected to Spotify's sign-in page if a fresh access token is required.</p>
@@ -30,10 +28,12 @@
 			<section class="result-section" ng-if="main.isFinished">
 				<h1>{{ main.artist.name }}</h1>
 				<img class="result-image" ng-src="{{ main.artist.images[0].url }}" alt="">
-				<md-button class="btn-next btn-next-popular" ng-click="main.getRelated(main.artist.id, 'popular')"> Go Mainstream.. </md-button>
-				<md-button class="btn-next btn-next-hipster" ng-click="main.getRelated(main.artist.id, 'hipster')"> Go Hipster.. </md-button>
-				<md-button class="btn-next btn-next-whatever" ng-click="main.getRelated(main.artist.id)"> Go Whatever.. </md-button>
-				<md-button class="btn-next btn-next-link" target="_blank" href="{{ main.artist.external_urls.spotify }}">Go to Page!</md-button>
+				<div class="result-nav">
+					<md-button class="btn-next btn-next-popular" ng-click="main.getRelated(main.artist.id, 'popular')"> Go Mainstream.. </md-button>
+					<md-button class="btn-next btn-next-hipster" ng-click="main.getRelated(main.artist.id, 'hipster')"> Go Hipster.. </md-button>
+					<md-button class="btn-next btn-next-whatever" ng-click="main.getRelated(main.artist.id)"> Go Whatever.. </md-button>
+					<md-button class="btn-next btn-page btn-next-link" target="_blank" href="{{ main.artist.external_urls.spotify }}">Go to Page!</md-button>
+				</div>
 			</section>
 			<section ng-if="main.noResults" class="error-section">
 				<h1>Whooops</h1>
