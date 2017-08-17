@@ -1,6 +1,14 @@
 /*General*/
 
 * {
+	position: relative;
+}
+
+/*#search, .fetching-section, .result-section h1 {
+	text-align: center;
+}*/
+
+.my-container {
 	text-align: center;
 }
 
@@ -23,6 +31,10 @@
 
 /*Result*/
 
+.result-section {
+	display: inline-block;
+}
+
 .result-image {
 	max-width: 18em;
 }
@@ -35,9 +47,10 @@
 	background-color: rgba(255, 255, 255, 0.54);
 }
 
-.btn-page {
+.btn-next-link {
 	max-width: 7.3em;
 	padding: 0 5px;
+	left: 5px;
 }
 
 
@@ -52,12 +65,28 @@
 	}
 }
 
-@media screen and (min-width: 564px){
+@media screen and (min-width: 552px){
+
+	.btn-next-link {
+		left: 0;
+	}
+}
+
+@media screen and (min-width: 686px){
 	.btn-next {
 		display: block;
 	}
 
-	.btn-page {
+	.btn-next-link {
 		margin-top: 8em;
 	}
+
+	.result-image {
+		float: left;
+		margin-left: 8em;
+	}
+
+	/*.result-nav {
+
+	}*/
 }
