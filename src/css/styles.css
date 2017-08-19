@@ -4,10 +4,6 @@
 	position: relative;
 }
 
-/*#search, .fetching-section, .result-section h1 {
-	text-align: center;
-}*/
-
 .my-container {
 	text-align: center;
 }
@@ -15,7 +11,7 @@
 /*Layout*/
 
 .my-container {
-	margin: 2em 0;
+	margin: 2em 1em;
 }
 
 /*Search*/
@@ -85,8 +81,4 @@
 		float: left;
 		margin-left: 8em;
 	}
-
-	/*.result-nav {
-
-	}*/
 }
