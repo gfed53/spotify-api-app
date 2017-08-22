@@ -18,8 +18,12 @@
 
 .my-searchbar {
 	margin-top: 2em;
-
 }
+
+.my-submit-container {
+	display: block;
+}
+
 
 .my-searchbar input {
 	text-align: left;
@@ -49,9 +53,15 @@
 	left: 5px;
 }
 
-
-
 @media screen and (min-width: 404px){
+	.my-submit-container {
+		display: inline-block;
+		position: absolute;
+		right: 0;
+		left: 300px;
+		top: 5px;
+		bottom: 0px;
+	}
 
 	.result-image {
 		max-width: 25em;
@@ -69,6 +79,8 @@
 }
 
 @media screen and (min-width: 686px){
+	
+
 	.btn-next {
 		display: block;
 	}
