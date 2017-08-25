@@ -16,6 +16,10 @@
 
 /*Search*/
 
+#search {
+	display: inline-block;
+}
+
 .my-searchbar {
 	margin-top: 2em;
 }
@@ -55,10 +59,11 @@
 
 @media screen and (min-width: 404px){
 	.my-submit-container {
+		/*max-width: 150px;*/
 		display: inline-block;
 		position: absolute;
-		right: 0;
-		left: 300px;
+		/*right: 400px;*/
+		/*left: 300px;*/
 		top: 5px;
 		bottom: 0px;
 	}

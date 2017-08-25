@@ -11,7 +11,8 @@
                 var spotOAuth = {
                     oauth: {
                         access_token: parameterMap.access_token,
-                        expires_in: parameterMap.expires_in
+                        expires_in: parameterMap.expires_in,
+                        time_stamp: Date.now()
                     }
                 };
                 localStorage.setItem("spotOAuth", JSON.stringify(spotOAuth));
