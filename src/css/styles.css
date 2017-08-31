@@ -59,11 +59,8 @@
 
 @media screen and (min-width: 404px){
 	.my-submit-container {
-		/*max-width: 150px;*/
 		display: inline-block;
 		position: absolute;
-		/*right: 400px;*/
-		/*left: 300px;*/
 		top: 5px;
 		bottom: 0px;
 	}
