@@ -65,6 +65,7 @@
 
 				$http.get(url, {headers}).then(response => {
 					let allArtists = response.data.artists;
+					let selectedGrp;
 					if (type){
 						if(type === 'popular'){
 							selectedGrp = getPopular(allArtists);
