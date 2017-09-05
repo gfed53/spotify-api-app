@@ -36,7 +36,12 @@
 /*Result*/
 
 .result-section {
+	transition: 500ms ease-in-out all;
 	display: inline-block;
+	position: absolute;
+	top: 225px;
+	left: 0;
+	right: 0;
 }
 
 .result-image {
@@ -55,6 +60,17 @@
 	max-width: 7.3em;
 	padding: 0 5px;
 	left: 5px;
+}
+
+/*Animations*/
+
+.result-section.ng-enter, .result-section.ng-leave.ng-leave-active {
+	transition: 500ms ease-in-out all;
+	opacity: 0;
+}
+
+.result-section.ng-enter.ng-enter-active, .result-section.ng-leave {
+	opacity: 1;
 }
 
 @media screen and (min-width: 404px){
@@ -92,7 +108,7 @@
 	}
 
 	.result-image {
-		float: left;
+		/*float: left;*/
 		margin-left: 8em;
 	}
 }
