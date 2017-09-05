@@ -37,6 +37,7 @@
 
 .result-section {
 	transition: 500ms ease-in-out all;
+	/*transition: 250ms ease-in-out transform;*/
 	display: inline-block;
 	position: absolute;
 	top: 225px;
@@ -65,13 +66,26 @@
 /*Animations*/
 
 .result-section.ng-enter, .result-section.ng-leave.ng-leave-active {
-	transition: 500ms ease-in-out all;
+	transition: 250ms ease-in-out all;
 	opacity: 0;
 }
 
-.result-section.ng-enter.ng-enter-active, .result-section.ng-leave {
-	opacity: 1;
+.result-section.ng-enter {
+	transform: translateX(-100px);
 }
+
+.result-section.ng-enter.ng-enter-active, .result-section.ng-leave {
+	/*transition: 500ms ease-in-out opacity;*/
+	/*transition: 250ms ease-in-out transform;*/
+	opacity: 1;
+	/*transform: translateX(0);*/
+}
+
+.result-section.ng-leave.ng-leave-active {
+	transform: translateX(100px);
+}
+
+/*Media Queries*/
 
 @media screen and (min-width: 404px){
 	.my-submit-container {

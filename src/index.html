@@ -25,9 +25,6 @@
 				</md-input-container>
 			</form>
 		</section>
-		<section class="fetching-section" ng-if="main.isFetching">
-			<p>Fetching...</p>
-		</section>
 		<section class="result-section" ng-if="main.isFinished && !main.noResults">
 			<h1>{{ main.artist.name }}</h1>
 			<img class="result-image" ng-src="{{ main.artist.images[0].url }}" alt="">
