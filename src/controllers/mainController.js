@@ -9,6 +9,8 @@
 		let vm = this;
 		vm.getArtist = getArtist;
 		vm.getRelated = getRelated;
+		vm.status = spGetToken.status;
+		vm.auth = spGetToken.auth;
 
 
 		function getArtist(keyword){

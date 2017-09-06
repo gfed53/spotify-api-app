@@ -135,6 +135,7 @@
 
 		this.get = get;
 		this.auth = auth;
+		this.status = {needsAuth: null};
 
 		function auth(){
 			let url = 'https://accounts.spotify.com/authorize';
@@ -157,9 +158,11 @@
 
 		function get(){	
 			if(obj !== null && obj !== undefined && !isExpired(obj)){
+				this.status.needsAuth = false;
 				return obj.oauth.access_token;
 			} else {
-				auth();
+				this.status.needsAuth = true;
+				// auth();
 				
 			}
 		}
