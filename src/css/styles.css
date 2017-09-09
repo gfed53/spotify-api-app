@@ -26,6 +26,7 @@
 
 .my-submit-container {
 	display: block;
+	margin: 0;
 }
 
 
@@ -40,7 +41,7 @@
 	/*transition: 250ms ease-in-out transform;*/
 	display: inline-block;
 	position: absolute;
-	top: 225px;
+	top: 300px;
 	left: 0;
 	right: 0;
 }
@@ -90,6 +91,7 @@
 		position: absolute;
 		top: 5px;
 		bottom: 0px;
+		margin: 18px 0;
 	}
 
 	.result-image {
@@ -97,6 +99,10 @@
 	}
 	.btn-next {
 		background-color: transparent;
+	}
+
+	.result-section {
+		top: 225px;
 	}
 }
 
