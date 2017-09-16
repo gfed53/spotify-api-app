@@ -3,14 +3,17 @@
 (function(){
 	angular
 	.module('myApp')
-	.controller('mainController', ['spAPISearch', 'spGetToken', mainController]);
+	.controller('mainController', ['$location', '$timeout', 'spAPISearch', 'spGetToken', 'spScrollTo', mainController]);
 	
-	function mainController(spAPISearch, spGetToken){
+	function mainController($location, $timeout, spAPISearch, spGetToken, spScrollTo){
 		let vm = this;
 		vm.getArtist = getArtist;
 		vm.getRelated = getRelated;
 		vm.status = spGetToken.status;
 		vm.auth = spGetToken.auth;
+
+		// Clear anchor scroll url params
+		$location.url('/');
 
 
 		function getArtist(keyword){
@@ -22,11 +25,15 @@
 				vm.isFetching = false;
 				vm.isFinished = true;
 				vm.keyword = '';
-				vm.artist = artist;
+				vm.artist = artist;	
+				scrollTo('anchor');
 			}, () => {
 				vm.isFetching = false;
 				vm.isFinished = true;
 				vm.noResults = true;
+				scrollTo('anchor-error');
+			}).finally(()=> {
+				
 			});
 		}
 
@@ -39,11 +46,21 @@
 				vm.isFetching = false;
 				vm.isFinished = true;
 				vm.artist = artist;
+				scrollTo('anchor');
 			}, () => {
 				vm.isFetching = false;
 				vm.isFinished = true;
 				vm.noResults = true;
+				scrollTo('anchor-error');
+			}).finally(()=> {
+				
 			});
+		}
+
+		function scrollTo(element){
+			$timeout(() => {
+				spScrollTo().scrollToElement(element);
+			}, 0);
 		}
 	}
 

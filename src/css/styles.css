@@ -14,6 +14,11 @@
 	margin: 2em 1em;
 }
 
+/*#anchor {
+	position: absolute;
+	top: 100em;
+}*/
+
 /*Search*/
 
 #search {
@@ -38,10 +43,9 @@
 
 .result-section {
 	transition: 500ms ease-in-out all;
-	/*transition: 250ms ease-in-out transform;*/
 	display: inline-block;
 	position: absolute;
-	top: 300px;
+	/*top: 150px;*/
 	left: 0;
 	right: 0;
 }
@@ -102,7 +106,7 @@
 	}
 
 	.result-section {
-		top: 225px;
+		top: 125px;
 	}
 }
 

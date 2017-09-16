@@ -4,6 +4,7 @@
 	angular
 	.module('myApp')
 	.factory('spAPISearch', ['$http', '$q', 'spGetToken', spAPISearch])
+	.factory('spScrollTo', ['$location', '$anchorScroll', spScrollTo])
 	.service('spAPIKeys', ['$http', '$q', spAPIKeys])
 	.service('spGetToken', ['spAPIKeys', spGetToken]);
 
@@ -159,6 +160,29 @@
 				this.status.needsAuth = true;
 			}
 		}
+	}
+
+	//Used to auto-scroll to result after search
+
+	function spScrollTo($location, $anchorScroll){
+		return (scrollLocation) => {
+			let services = {
+				scrollToElement
+			};
+
+			return services;
+
+			function scrollToElement(scrollLocation){
+				// $anchorScroll.yOffset = 70;
+				let element = document.getElementById(scrollLocation);
+				if(element){
+					$location.hash(scrollLocation);
+					$anchorScroll();
+				} else {
+					window.scroll(0, 0);
+				}
+			}	
+		};
 	}
 
 })();

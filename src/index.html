@@ -32,20 +32,27 @@
 					</md-input-container>
 				</form>
 			</section>
-			<section class="result-section" ng-if="main.isFinished && !main.noResults">
-				<h1>{{ main.artist.name }}</h1>
-				<img class="result-image" ng-src="{{ main.artist.images[0].url }}" alt="">
-				<div class="result-nav">
-					<md-button class="btn-next btn-next-popular" ng-click="main.getRelated(main.artist.id, 'popular')"> Go Mainstream.. </md-button>
-					<md-button class="btn-next btn-next-hipster" ng-click="main.getRelated(main.artist.id, 'hipster')"> Go Hipster.. </md-button>
-					<md-button class="btn-next btn-next-whatever" ng-click="main.getRelated(main.artist.id)"> Go Whatever.. </md-button>
-					<md-button class="btn-next btn-next-link" target="_blank" href="{{ main.artist.external_urls.spotify }}">Go to Page!</md-button>
-				</div>
+			<section id="result-container">
+				<section class="result-section" id="result-section" ng-if="main.isFinished && !main.noResults">
+					
+					<h1>{{ main.artist.name }}</h1>
+					<img class="result-image" ng-src="{{ main.artist.images[0].url }}" alt="">
+					<div class="result-nav">
+						<md-button class="btn-next btn-next-popular" ng-click="main.getRelated(main.artist.id, 'popular')"> Go Mainstream.. </md-button>
+						<md-button class="btn-next btn-next-hipster" ng-click="main.getRelated(main.artist.id, 'hipster')"> Go Hipster.. </md-button>
+						<md-button class="btn-next btn-next-whatever" ng-click="main.getRelated(main.artist.id)"> Go Whatever.. </md-button>
+						<md-button class="btn-next btn-next-link" target="_blank" href="{{ main.artist.external_urls.spotify }}">Go to Page!</md-button>
+					</div>
+					<div id="anchor"></div>
+				</section>
+				<section ng-if="main.noResults" class="error-section" id="error-section">
+
+					<h1>Whooops</h1>
+					<p>Sorry, we couldn't find anything. Try something else.</p>
+					<div id="anchor-error"></div>
+				</section>
 			</section>
-			<section ng-if="main.noResults" class="error-section">
-				<h1>Whooops</h1>
-				<p>Sorry, we couldn't find anything. Try something else.</p>
-			</section>
+			
 		</section>
 	</main>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
