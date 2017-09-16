@@ -23,7 +23,6 @@
 				vm.isFinished = true;
 				vm.keyword = '';
 				vm.artist = artist;
-				console.log('artist',vm.artist);
 			}, () => {
 				vm.isFetching = false;
 				vm.isFinished = true;

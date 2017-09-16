@@ -4,7 +4,8 @@
   "description": "Spotify API App",
   "main": "index.js",
   "scripts": {
-    "start": "node server"
+    "start": "node server",
+    "build-start": "gulp build && node server"
   },
   "author": "Gregory Federico",
   "license": "Unlicensed",

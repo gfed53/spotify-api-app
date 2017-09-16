@@ -82,7 +82,9 @@
 					let artist = selectedGrp.getRandom();
 					deferred.resolve(artist);
 				}, err => {
-					console.log('err',err);
+					if(err.status === 401 && spGetToken.token){
+						spGetToken.auth();
+					}
 				});
 
 				return deferred.promise;
@@ -104,8 +106,6 @@
 		this.get = get;
 		this.init = init;
 		this.initKeys = initKeys;
-
-		
 
 		function init(){
 			let deferred = $q.defer();
@@ -146,13 +146,8 @@
 			window.location.href = 'https://accounts.spotify.com/authorize?client_id=' + client_id + '&response_type=token&redirect_uri='+redirect_uri;
 		}
 
-		//Checks if authObj.time_stamp + authObj.expires_in > Date.now();
-		// Returns boolean
-		function isExpired(authObj){	
-			console.log('time_stamp',authObj.oauth.time_stamp);
-			console.log('expires_in',authObj.oauth.expires_in);
-			console.log('date now', Date.now());
-			console.log('bool is',authObj.oauth.time_stamp + (parseInt(authObj.oauth.expires_in)*1000) < Date.now());
+		// Checks if auth token is expired and needs to be refreshed
+		function isExpired(authObj){
 			return authObj.oauth.time_stamp + (parseInt(authObj.oauth.expires_in)*1000) < Date.now();
 		}
 
@@ -162,8 +157,6 @@
 				return obj.oauth.access_token;
 			} else {
 				this.status.needsAuth = true;
-				// auth();
-				
 			}
 		}
 	}
