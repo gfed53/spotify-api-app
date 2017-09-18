@@ -15,10 +15,7 @@
 				getArtist: getArtist,
 				getRelated: getRelated
 			};
-
 			let token = spGetToken.token;
-
-
 
 			function getArtist(keyword){
 				let deferred = $q.defer();
@@ -28,7 +25,6 @@
 					q: keyword,
 					type: 'artist'
 				};
-
 				let headers = {
 					"Authorization": `Bearer ${token}`
 				};
@@ -42,8 +38,7 @@
 					} else {
 						let artist = response.data.artists.items[0];
 						deferred.resolve(artist);
-					}
-					
+					}				
 				}, (err) => {
 					if(err.status === 401 && spGetToken.token){
 						spGetToken.auth();
@@ -51,14 +46,11 @@
 				});
 
 				return deferred.promise;
-
 			}
 
 			function getRelated(id, type){
 				let deferred = $q.defer();
-
 				let url = `https://api.spotify.com/v1/artists/${id}/related-artists`;
-
 				let headers = {
 					"Authorization": `Bearer ${token}`
 				};

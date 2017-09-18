@@ -34,7 +34,6 @@
 			</section>
 			<section id="result-container">
 				<section class="result-section" id="result-section" ng-if="main.isFinished && !main.noResults">
-					
 					<h1>{{ main.artist.name }}</h1>
 					<img class="result-image" ng-src="{{ main.artist.images[0].url }}" alt="">
 					<div class="result-nav">
@@ -46,13 +45,11 @@
 					<div id="anchor"></div>
 				</section>
 				<section ng-if="main.noResults" class="error-section" id="error-section">
-
 					<h1>Whooops</h1>
 					<p>Sorry, we couldn't find anything. Try something else.</p>
 					<div id="anchor-error"></div>
 				</section>
-			</section>
-			
+			</section>	
 		</section>
 	</main>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
